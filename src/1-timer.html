@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body class="p-10 flex flex-col gap-5">
+    <div class="flex gap-2">
+      <input
+        type="text "
+        id="datetime-picker"
+        class="border py-2 px-4 rounded-lg w-64 h-10"
+      />
+      <button
+        type="button"
+        data-start
+        class="px-4 py-2 border-0 rounded-lg bg-[#CFCFCF]"
+      >
+        Start
+      </button>
+    </div>
+
+    <div class="timer flex gap-2">
+      <div class="field flex flex-col items-center">
+        <span class="value text-[40px]" data-days>00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="field flex flex-col items-center">
+        <span class="value text-[40px]" data-hours>00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="field flex flex-col items-center">
+        <span class="value text-[40px]" data-minutes>00</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="field flex flex-col items-center">
+        <span class="value text-[40px]" data-seconds>00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+    <script type="module" src="./js/1-timer.js"></script>
+  </body>
+</html>
