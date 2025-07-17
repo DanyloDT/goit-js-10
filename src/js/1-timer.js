@@ -2,6 +2,8 @@
 import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate = null;
 const input = document.querySelector('#datetime-picker');
@@ -13,28 +15,28 @@ const ref = {
   seconds: document.querySelector('[data-seconds]'),
 };
 
-let fp = null;
+// let fp = null;
 
-const initFlatpickr = () => {
-  fp = flatpickr('#datetime-picker', {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-      if (selectedDates[0] < Date.now()) {
-        alert('Please choose a date in the future');
-        btn.disabled = true;
-      }
-      if (selectedDates[0] > Date.now()) {
-        userSelectedDate = selectedDates[0];
-        btn.disabled = false;
-      }
-    },
-  });
-};
+flatpickr('#datetime-picker', {
+  enableTime: true,
+  time_24hr: true,
+  defaultDate: new Date(),
+  minuteIncrement: 1,
+  onClose(selectedDates) {
+    if (selectedDates[0] < Date.now()) {
+      iziToast.error({
+        title: 'Please choose a date in the future',
+        position: 'topCenter',
+      });
 
-initFlatpickr();
+      btn.disabled = true;
+    }
+    if (selectedDates[0] > Date.now()) {
+      userSelectedDate = selectedDates[0];
+      btn.disabled = false;
+    }
+  },
+});
 
 const startTimer = () => {
   const time = setInterval(() => {
@@ -44,7 +46,7 @@ const startTimer = () => {
       clearInterval(time);
       btn.disabled = false;
       input.disabled = false;
-      initFlatpickr();
+
       return;
     }
 
@@ -57,7 +59,6 @@ const startTimer = () => {
 
   btn.disabled = true;
   input.disabled = true;
-  fp.destroy();
 };
 
 btn.addEventListener('click', startTimer);
