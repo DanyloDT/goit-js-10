@@ -1,6 +1,5 @@
-// Описаний у документації
 import iziToast from 'izitoast';
-// Додатковий імпорт стилів
+
 import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('.form');
@@ -34,19 +33,3 @@ const onFormSubmit = e => {
 };
 
 form.addEventListener('submit', onFormSubmit);
-
-// const showTost = (isSuccess, delay) => {
-//     console.log(isSuccess);
-
-//   const method = isSuccess ? iziToast.success : iziToast.error;
-//   method({
-//     message: isSuccess
-//       ? `✅ Fulfilled promise in ${delay} ms`
-//       : `❌ Rejected promise in ${delay} ms`,
-//     position: 'topCenter',
-//   });
-// };
-
-// promise
-//   .then(() => showTost(true, delay))
-//   .catch(() => showTost(false, delay));
